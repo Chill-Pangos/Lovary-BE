@@ -54,13 +54,17 @@ module.exports = router;
  *   post:
  *     summary: Login
  *     tags: [Auth]
- *     parameters:
- *       - in: path
- *         name: userId
- *         required: true
- *         schema:
- *           type: string
- *         description: User id
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *                userId:
+ *                 type: string
+ *             example:
+ *               userId: 6780158f7584e5e81a8d829a
  *     responses:
  *       "200":
  *         description: OK
@@ -90,13 +94,17 @@ module.exports = router;
  *   post:
  *     summary: Logout
  *     tags: [Auth]
- *     parameters:
- *       - in: path
- *         name: userId
- *         required: true
- *         schema:
- *           type: string
- *         description: User id
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *                userId:
+ *                 type: string
+ *             example:
+ *               userId: 6780158f7584e5e81a8d829a
  *     responses:
  *       "204":
  *         description: No content

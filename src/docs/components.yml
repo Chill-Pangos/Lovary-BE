@@ -51,7 +51,6 @@ components:
           properties:
             id:
               type: string
-              format: uuid
               example: 60f1b5b8c2a1e3f1d5e9b6c4
             name:
               type: string
@@ -66,6 +65,35 @@ components:
           example: 2020-06-01
       required:
         - name
+
+    Diary:
+      type: object
+      properties:
+        user:
+          type: object
+          properties:
+            id:
+              type: objectId
+              example: 60f1b5b8c2a1e3f1d5e9b6c4
+            name:
+              type: string
+              example: John
+        title:
+          type: string
+          example: example title
+        content:
+          type: string
+          example: example content
+        createdDate:
+          type: string
+          format: date
+          example: 2020-06-01
+      required:
+        - id
+        - name
+        - title
+        - content
+        - createdDate
 
   responses:
     ValidationError:

@@ -42,7 +42,7 @@ const verifyToken = async (token, type) => {
 const generateAuthTokens = async (user) => {
   const accessTokenExpires = day().add(config.jwt.accessExpirationDays, "days");
   const accessToken = generateToken(
-    user.id,
+    user._id,
     accessTokenExpires,
     tokenTypes.ACCESS
   );
@@ -52,7 +52,7 @@ const generateAuthTokens = async (user) => {
     "days"
   );
   const refreshToken = generateToken(
-    user.id,
+    user._id,
     config.jwt.refreshExpirationDays,
     tokenTypes.REFRESH
   );

@@ -1,5 +1,4 @@
 const mongoose = require("mongoose");
-const bcrypt = require("bcryptjs");
 const toJSON = require("./plugins/toJSON.plugin");
 const paginate = require("./plugins/paginate.plugin");
 
@@ -12,7 +11,7 @@ const userSchema = new mongoose.Schema(
     },
     dateOfBirth: {
       type: Date,
-      required: false,
+      required: true,
     },
     partner: {
       id: {
@@ -21,8 +20,8 @@ const userSchema = new mongoose.Schema(
       },
       name: {
         type: String,
-        required: true,
-        trim: false,
+        required: false,
+        trim: true,
       },
       dateOfBirth: {
         type: Date,

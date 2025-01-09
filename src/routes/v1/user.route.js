@@ -2,18 +2,23 @@ const express = require("express");
 const validate = require("../../middlewares/validate");
 const userValidation = require("../../validations/user.validation");
 const userController = require("../../controllers/user.controller");
+const auth = require("../../middlewares/auth");
 
 const router = express.Router();
 
 router
   .route("/")
-  .post(validate(userValidation.createUser), userController.createUser);
+  .post(auth(), validate(userValidation.createUser), userController.createUser);
 
 router
   .route("/:userId")
-  .get(validate(userValidation.getUser), userController.getUser)
-  .patch(validate(userValidation.updateUser), userController.updateUser)
-  .delete(validate(userValidation.deleteUser), userController.deleteUser);
+  .get(auth(), validate(userValidation.getUser), userController.getUser)
+  .patch(auth(), validate(userValidation.updateUser), userController.updateUser)
+  .delete(
+    auth(),
+    validate(userValidation.deleteUser),
+    userController.deleteUser
+  );
 
 module.exports = router;
 
@@ -67,7 +72,7 @@ module.exports = router;
 
 /**
  * @swagger
- * /user/{id}:
+ * /user/{userId}:
  *   get:
  *     summary: Get a user
  *     description: Logged in users can fetch only their own user information. Only admins can fetch other users.
