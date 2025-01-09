@@ -47,9 +47,9 @@ app.get("/", function (req, res) {
 
 app.use("/v1", routes);
 
-app.use((req, res, next) => {
-  next(new ApiError(404, "Not found"));
-});
+// app.use((req, res, next) => {
+//   next(new ApiError(404, "Not found"));
+// });
 
 app.use(errorConverter);
 
