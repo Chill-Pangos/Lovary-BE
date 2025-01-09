@@ -4,15 +4,6 @@ const tokenService = require("./token.service");
 const Token = require("../models/token.model");
 const { tokenTypes } = require("../config/tokens");
 
-const loginWithEmailAndPassword = async (email, password) => {
-  const user = await userService.searchUsersByEmail(email);
-
-  if (!user || !(await user.isPasswordMatch(password))) {
-    throw new ApiError(401, "Incorrect email or password");
-  }
-  return user;
-};
-
 const logout = async (refreshToken) => {
   const refreshTokenDoc = await Token.findOne({
     token: refreshToken,
@@ -43,7 +34,6 @@ const refreshAuth = async (refreshToken) => {
 };
 
 module.exports = {
-  loginWithEmailAndPassword,
   logout,
   refreshAuth,
 };
