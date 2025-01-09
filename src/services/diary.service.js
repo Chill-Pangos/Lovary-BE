@@ -40,16 +40,16 @@ const getDiaries = async (userId, partnerId) => {
         _id: 1,
         userDiary: {
           $filter: {
-            input: "$userDiary", // Lọc mảng userDiary
-            as: "diary", // Đặt tên cho phần tử trong mảng
-            cond: { $ne: ["$$diary", null] }, // Lọc bỏ các giá trị null
+            input: "$userDiary",
+            as: "diary",
+            cond: { $ne: ["$$diary", null] },
           },
         },
         partnerDiary: {
           $filter: {
-            input: "$partnerDiary", // Lọc mảng partnerDiary
-            as: "diary", // Đặt tên cho phần tử trong mảng
-            cond: { $ne: ["$$diary", null] }, // Lọc bỏ các giá trị null
+            input: "$partnerDiary",
+            as: "diary",
+            cond: { $ne: ["$$diary", null] },
           },
         },
       },
